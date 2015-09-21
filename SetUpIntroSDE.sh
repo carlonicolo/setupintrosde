@@ -90,9 +90,18 @@ function optionMenu {
 #This function will install jdk. You need to download the jdk from Oracle website
 #and put the jdk1.8.* in the same folder of the scritp
 function installjdk {
+  apt-get --yes --force-yes install curl
+  if [ $( arch) == 'x86_64' ] ; then
+     echo 'Downloading JDK 64bit...'
+     curl -o jdk-8u60-linux-x64.tar.gz http://www.carlonicolo.com/IntroSDE/jdk-8u60-linux-x64.tar.gz
+  else
+     echo 'Downloading JDK 32bit...'
+     curl -o jdk-8u60-linux-i586.tar.gz http://www.carlonicolo.com/IntroSDE/jdk-8u60-linux-i586.tar.gz
+  fi  
+  
   #Download the JDK 
-  #echo 'Downloading jdk-8u60-linux-i586.tar.gz'
-  #curl -o jdk-8u60-linux-i586.tar.gz http://www.carlonicolo.com/IntroSDE/jdk-8u60-linux-i586.tar.gz
+#  echo 'Downloading jdk-8u60-linux-i586.tar.gz'
+#  curl -o jdk-8u60-linux-i586.tar.gz http://www.carlonicolo.com/IntroSDE/jdk-8u60-linux-i586.tar.gz
   mkdir /usr/local/jvm/
   tar -xvf jdk-*.tar.gz
   mv jdk1.8.* jdk1.8.0
@@ -113,12 +122,17 @@ function installjdk {
   echo ""  
   echo "Java installed"
   }
+  
+  
+  
+  
+  
 
 #This function will install and configure git 
 function installGit {
   echo ""
   echo "I'm going to install git and kdiff3"
-  apt-get install git kdiff3
+  apt-get --yes --force-yes install git kdiff3
   
   echo ""
   echo "***** Configuring git *****"
@@ -146,6 +160,11 @@ function installGit {
   
   echo ""
   echo "Git installed and configured !"
+  
+  user=$(logname)
+  echo $user
+  cd
+  cp .gitconfig /home/$user
 
 }
 
@@ -153,7 +172,7 @@ function installGit {
 
 function installMaven {
   echo ""
-  apt-get install maven
+  apt-get --yes --force-yes install maven
 }
 
 
