@@ -8,11 +8,6 @@ This scritp will install the Oracle jdk, git and maven
 You need to execute this script as root because there are some
 commands that only root can perform
 
-The first thing you need to do is to download the Oracle JDK ---> http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-select the file ---> jdk-8u60-linux-i586.tar.gz 
-Then copy the jdk-8u60-linux-i586.tar.gz in the same location where you will execute the script
-It means that you need to place this file (jdk-8u60-linux-i586.tar.gz) in the same folder where you will execute the script SetUpIntroSDE
-
 In order to execute this script you need to give permissions:
 Command---> chmod +x SetUpIntroSDE'
 For executing this script and install the full Environment (JDK 1.8, Git and Maven)
@@ -20,11 +15,18 @@ you can type this command:
 ./SetUpIntroSDE -A
 I suggest to execute the script in this way because doing this you will install the full Environment.
 When the script is installing the jdk you need to select and set this version as default for your system, selecting the right number at the prompt
+This script automatically detect your architecture and select the right jdk version ( 32 or 64 bit ) for your system.
 
 At the end you will have all the Environment installed and the script will generate for you
 also a log file where you could see the version of the installed software.
 
+If you don't want install everything you can execute the scritp without parameters and then 
+choose which software install.
+./SetUpIntroSDE
 
+************************************
+*            Bye bye               *
+************************************
 
 
 
